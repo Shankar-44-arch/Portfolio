@@ -1,0 +1,214 @@
+.projects-section {
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--spacing-xl);
+}
+
+.slider-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-left: auto;
+}
+
+.control-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.control-btn:hover:not(:disabled) {
+  background-color: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.projects-slider-container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  padding: 10px; /* Add padding for box-shadow visibility */
+  margin: -10px; 
+}
+
+.projects-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.project-card-wrapper {
+  padding: 0 calc(var(--spacing-md));
+  box-sizing: border-box;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 540px; /* Adjusted to account for larger architecture box */
+  box-shadow: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  border-color: var(--accent-primary);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-title {
+  margin-bottom: 0;
+}
+
+.project-links {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.project-links a {
+  color: var(--text-secondary);
+  transition: var(--transition-normal);
+}
+
+.project-links a:hover {
+  color: var(--accent-primary);
+}
+
+.project-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  height: 4.5rem; /* Exactly 3 lines (1.5 line-height * 3) */
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.architecture-box {
+  min-height: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.85rem 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.architecture-box::-webkit-scrollbar {
+  width: 5px;
+}
+.architecture-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.architecture-box::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+.architecture-box::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+.architecture-title {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.architecture-list {
+  font-size: 0.875rem;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  color: var(--text-secondary);
+  padding-left: 1.2rem;
+  margin: 0;
+  list-style-type: disc;
+}
+
+.architecture-list li {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.indicator-dot.active {
+  background-color: var(--accent-primary);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+}
+
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  align-items: flex-start;
+  align-content: flex-start;
+  min-height: 72px;
+}
+
+.tech-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background-color: rgba(14, 165, 233, 0.1); /* Sky blue with opacity */
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}

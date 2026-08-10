@@ -1,0 +1,71 @@
+.contact-section {
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-subtext {
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-xl);
+}
+
+.contact-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.text-green-500 {
+  color: #22c55e;
+}
+
+.social-links {
+  display: flex;
+  gap: var(--spacing-xl);
+  justify-content: center;
+  align-items: center;
+}
+
+.social-links a {
+  color: var(--text-secondary);
+  transition: var(--transition-normal);
+  display: inline-flex;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-full);
+}
+
+.social-links a:hover {
+  color: var(--accent-primary);
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.leetcode-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .contact-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-actions .btn-large {
+    width: 100%;
+  }
+}
