@@ -1,46 +1,55 @@
 import React from 'react';
-import { Award, Trophy } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { achievementsData } from '../data';
 import '../styles/Achievements.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
 
 const Achievements = () => {
   return (
     <section id="achievements" className="achievements-section section-secondary">
       <div className="container">
-        <h2>Achievements & Certifications</h2>
-        <p>A summary of my competitive programming milestones and professional certifications.</p>
-
-        <div className="achievements-grid">
-          {/* Certifications */}
-          <div className="achievement-card">
-            <div className="card-header">
-              <Award className="icon-accent" size={28} />
-              <h3>Certifications</h3>
-            </div>
-            <ul className="achievement-list">
-              {achievementsData.certifications.map((cert, index) => (
-                <li key={index} className="achievement-item">
-                  {cert}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Competitive Programming */}
-          <div className="achievement-card">
-            <div className="card-header">
-              <Trophy className="icon-accent" size={28} />
-              <h3>Competitive Programming</h3>
-            </div>
-            <ul className="achievement-list">
-              {achievementsData.competitive.map((item, index) => (
-                <li key={index} className="achievement-item">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-50px" }}
+          variants={itemVariants}
+        >
+          <span className="section-eyebrow">04. RECOGNITION</span>
+          <h2>Achievements & Certifications.</h2>
+          <p>Milestones and professional accomplishments.</p>
+        </motion.div>
+        
+        <motion.div 
+          className="achievements-bento-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-50px" }}
+        >
+          {achievementsData.map((item, index) => (
+            <motion.div key={index} className="bento-card" variants={itemVariants}>
+              <h3 className="bento-title">{item.title}</h3>
+              <p className="bento-subtitle">{item.subtitle}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

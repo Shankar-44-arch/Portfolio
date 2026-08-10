@@ -1,0 +1,72 @@
+.animated-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Keep it strictly in the background */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  animation: float 20s infinite ease-in-out alternate;
+}
+
+[data-theme="dark"] .bg-orb {
+  opacity: 0.1;
+}
+
+.orb-1 {
+  width: 40vw;
+  height: 40vw;
+  background-color: var(--accent-primary);
+  top: -10vw;
+  left: -10vw;
+  animation-duration: 25s;
+}
+
+.orb-2 {
+  width: 50vw;
+  height: 50vw;
+  background-color: var(--orb-color-2);
+  top: 40vh;
+  right: -10vw;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 35vw;
+  height: 35vw;
+  background-color: var(--orb-color-3);
+  bottom: -10vw;
+  left: 20vw;
+  animation-duration: 20s;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(5vw, 5vh) scale(1.1);
+  }
+  66% {
+    transform: translate(-5vw, 10vh) scale(0.9);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb {
+    animation: none;
+  }
+}

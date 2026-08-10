@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
 import '../styles/Hero.css';
 
@@ -18,37 +19,61 @@ const Hero = ({ theme }) => {
     setTimeout(() => setPingStatus("PING API"), 2000);
   };
 
+  const heroVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section id="about" className="hero-section bg-grid-pattern section-primary">
+    <section id="hero" className="hero-section section-primary">
       <div className="container hero-container">
         
         {/* Left Column: Content */}
-        <div className="hero-content">
-          <div className="status-badge">
+        <motion.div 
+          className="hero-content"
+          variants={heroVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div className="status-badge" variants={itemVariants}>
             <span className="status-dot"></span>
             Pre-Final Year CS Student | Open to Internship Roles
-          </div>
+          </motion.div>
           
-          <h2 className="hero-greeting">Hi, I'm Shankar K G 👋</h2>
-          <h1 className="hero-headline">Aspiring Backend Engineer & Software Developer</h1>
+          <motion.h2 className="hero-greeting" variants={itemVariants}>Hi, I'm {import.meta.env.VITE_USER_NAME || "Your Name"} 👋</motion.h2>
+          <motion.h1 className="hero-headline" variants={itemVariants}>Aspiring Software Engineer</motion.h1>
           
-          <p className="hero-subtext">
+          <motion.p className="hero-subtext" variants={itemVariants}>
             Pre-Final Year Computer Science Student specializing in building scalable RESTful APIs, microservices, and database architecture using Python & Java.
-          </p>
+          </motion.p>
           
-          <div className="hero-actions">
+          <motion.div className="hero-actions" variants={itemVariants}>
             <a href="#projects" className="btn btn-primary">
               View Projects
             </a>
-            <a href="/resume.pdf" className="btn btn-outline" download>
+            <a href={import.meta.env.VITE_RESUME_PATH || '/resume.pdf'} className="btn btn-outline" download>
               <Download size={18} />
               Download Resume
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Column: Graphic */}
-        <div className="hero-visuals">
+        <motion.div 
+          className="hero-visuals"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <div className="profile-container">
             <div className="profile-image-placeholder">
               <span className="placeholder-text">SHANKAR.DEV</span>
@@ -86,7 +111,7 @@ const Hero = ({ theme }) => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

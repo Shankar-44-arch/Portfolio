@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GithubIcon = ({ size = 24 }) => (
@@ -9,6 +10,23 @@ const GithubIcon = ({ size = 24 }) => (
 );
 import { projectsData } from '../data';
 import '../styles/Projects.css';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,8 +58,17 @@ const Projects = () => {
       <div className="container">
         <div className="projects-header">
           <div>
-            <h2>Featured Projects</h2>
-            <p>A selection of backend systems and APIs I have built.</p>
+            <motion.div 
+              className="section-header"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="section-eyebrow">03. PORTFOLIO</span>
+              <h2>Featured Projects.</h2>
+              <p>A selection of my recent backend and full-stack development work.</p>
+            </motion.div>
           </div>
           <div className="slider-controls">
             <button 
@@ -64,17 +91,27 @@ const Projects = () => {
         </div>
 
         <div className="projects-slider-container">
-          <div 
+          <motion.div 
             className="projects-track" 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-50px" }}
             style={{ 
               transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` 
             }}
           >
           {projectsData.map((project) => (
-            <div key={project.id} className="project-card-wrapper" style={{ flex: `0 0 ${100 / visibleCards}%` }}>
+            <motion.div key={project.id} className="project-card-wrapper" style={{ flex: `0 0 ${100 / visibleCards}%` }} variants={itemVariants}>
               <article className="project-card">
               <div className="project-header">
-                <h3 className="project-title">{project.title}</h3>
+                <h3 className="project-title">
+                  {project.title}
+                  <svg className="project-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path>
+                  </svg>
+                </h3>
                 <div className="project-links">
                   <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`}>
                     <GithubIcon size={20} />
@@ -102,9 +139,9 @@ const Projects = () => {
                 ))}
               </div>
             </article>
-            </div>
+            </motion.div>
           ))}
-          </div>
+          </motion.div>
         </div>
         
         <div className="slider-indicators">

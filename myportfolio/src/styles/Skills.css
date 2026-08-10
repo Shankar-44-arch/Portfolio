@@ -3,8 +3,9 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-xl);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
   margin-top: var(--spacing-2xl);
 }
 
@@ -27,6 +28,13 @@
 .category-title {
   margin-bottom: var(--spacing-md);
   font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-accent {
+  color: var(--accent-primary);
 }
 
 .skill-badges {
@@ -46,7 +54,13 @@
   border-color: var(--accent-primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
   .skills-grid {
     grid-template-columns: 1fr;
   }

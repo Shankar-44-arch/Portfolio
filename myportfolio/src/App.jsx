@@ -2,25 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AnimatedBackground from './components/AnimatedBackground';
 import './App.css'; // Optional if any app-specific styles exist, though not strictly needed now.
-
-const FadeIn = ({ children }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  );
-};
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -41,21 +30,15 @@ function App() {
 
   return (
     <div className="app-container">
+      <AnimatedBackground />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />
-        <FadeIn>
-          <Skills />
-        </FadeIn>
-        <FadeIn>
-          <Projects />
-        </FadeIn>
-        <FadeIn>
-          <Achievements />
-        </FadeIn>
-        <FadeIn>
-          <Contact />
-        </FadeIn>
+        <About />
+        <Skills />
+        <Projects />
+        <Achievements />
+        <Contact />
       </main>
       <Footer />
     </div>

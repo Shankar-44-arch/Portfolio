@@ -1,7 +1,28 @@
+export const aboutData = {
+  philosophy: [
+    "I’m a pre-final year Computer Science student who enjoys solving complex backend problems and building reliable systems. I specialize in developing scalable web services using Python, Java, and modern database tools, focusing on clean code and efficient database schemas.",
+    "I love understanding how things work under the hood whether that's optimizing query performance, debugging bottlenecks, or structuring RESTful APIs. I’m always eager to collaborate on real-world engineering projects and expand my software development skills."
+  ],
+  education: [
+    {
+      degree: 'B.S. Computer Science',
+      institution: import.meta.env.VITE_COLLEGE_NAME || '[Your University Name]',
+      period: '2021 - 2025',
+      description: 'Specializing in backend systems and software engineering. Consistently maintaining top academic performance while participating in various hackathons.'
+    },
+    {
+      degree: 'High School Diploma',
+      institution: import.meta.env.VITE_SCHOOL_NAME || '[High School Name]',
+      period: 'Graduated 2021',
+      description: 'Focused on mathematics and computer science fundamentals.'
+    }
+  ]
+};
+
 export const skillsData = {
   languages: ['Python', 'Java', 'JavaScript', 'SQL'],
   frameworks: ['Django', 'Spring Boot', 'React', 'Node.js'],
-  databases: ['PostgreSQL', 'Docker', 'Git', 'Postman', 'Linux'],
+  databases: ['PostgreSQL', 'Docker', 'Git', 'Postman'],
   coreConcepts: ['REST APIs', 'Microservices', 'Data Structures', 'System Design Basics'],
 };
 
@@ -73,22 +94,34 @@ export const projectsData = [
   }
 ];
 
-export const achievementsData = {
-  certifications: [
-    'AWS Certified Cloud Practitioner',
-    'Oracle Certified Associate Java Programmer'
-  ],
-  competitive: [
-    'LeetCode: Top 10% in Contests, 300+ Problems Solved',
-    'HackerRank: 5-Star Gold Badge in Problem Solving',
-    'Winner: University Hackathon 2023 (Backend Category)'
-  ]
-};
+export const achievementsData = [
+  {
+    title: 'AWS Certified Cloud Practitioner',
+    subtitle: 'Amazon Web Services'
+  },
+  {
+    title: 'Oracle Certified Associate',
+    subtitle: 'Java Programmer'
+  },
+  {
+    title: 'Top 10% in Contests',
+    subtitle: 'LeetCode · 300+ Problems Solved'
+  },
+  {
+    title: '5-Star Gold Badge',
+    subtitle: 'HackerRank · Problem Solving'
+  },
+  {
+    title: 'Winner: Backend Category',
+    subtitle: 'University Hackathon 2023'
+  }
+];
 
 export const socialLinks = {
-  email: 'your.email@domain.com',
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
-  leetcode: 'https://leetcode.com',
-  twitter: 'https://twitter.com'
+  email: import.meta.env.VITE_USER_EMAIL || 'your.email@domain.com',
+  github: import.meta.env.VITE_GITHUB_URL || 'https://github.com',
+  linkedin: import.meta.env.VITE_LINKEDIN_URL || 'https://linkedin.com',
+  leetcode: import.meta.env.VITE_LEETCODE_URL || 'https://leetcode.com'
 };
+
+

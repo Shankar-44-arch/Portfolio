@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Mail, Check } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, Globe, Send } from 'lucide-react';
 
 const GithubIcon = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -11,65 +12,122 @@ const GithubIcon = ({ size = 24 }) => (
 const LinkedinIcon = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect width="4" height="12" x="2" y="9"/>
+    <rect x="2" y="9" width="4" height="12"/>
     <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
-
-const TwitterIcon = ({ size = 24 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
   </svg>
 );
 import { socialLinks } from '../data';
 import '../styles/Contact.css';
 
 const Contact = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = (e) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(socialLinks.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
-    <section id="contact" className="contact-section section-primary bg-grid-pattern">
-      <div className="container contact-container">
-        <h2>Let's Connect</h2>
-        <p className="contact-subtext">
-          I am currently looking for summer internship opportunities. Feel free to reach out via email or LinkedIn.
-        </p>
-
-        <div className="contact-actions">
-          <a href={`mailto:${socialLinks.email}`} className="btn btn-primary btn-large">
-            <Mail size={20} />
-            Send Email
-          </a>
-          <button className="btn btn-outline btn-large" onClick={handleCopyEmail}>
-            {copied ? <Check size={20} className="text-green-500" /> : <Mail size={20} />}
-            {copied ? 'Copied!' : 'Copy Email'}
-          </button>
+    <section id="contact" className="contact-section section-primary">
+      <motion.div 
+        className="container"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, margin: "-50px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <div className="section-header">
+          <span className="section-eyebrow">05. COMMUNICATION</span>
+          <h2>Direct contact.</h2>
+          <p>
+            Whether for research collaborations, medical equipment engineering, enterprise software architecture, or founder inquiries.
+          </p>
         </div>
 
-        <div className="social-links">
-          <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-            <LinkedinIcon size={28} />
-          </a>
-          <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-            <GithubIcon size={28} />
-          </a>
-          <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
-            <TwitterIcon size={28} />
-          </a>
-          <a href={socialLinks.leetcode} target="_blank" rel="noopener noreferrer" aria-label="LeetCode Profile" className="leetcode-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-          </a>
+        <div className="contact-grid">
+          {/* Left Column: Contact Details */}
+          <div className="contact-card details-card">
+            <h3>Contact Details</h3>
+            
+            <div className="contact-list">
+              <a href={`mailto:${socialLinks.email}`} className="contact-item">
+                <div className="contact-icon-wrapper">
+                  <Mail size={18} />
+                </div>
+                <div className="contact-item-content">
+                  <span className="contact-label">Email</span>
+                  <span className="contact-value">{socialLinks.email}</span>
+                </div>
+              </a>
+
+              <a href={`tel:${import.meta.env.VITE_PHONE_NUMBER || '+911234567890'}`} className="contact-item">
+                <div className="contact-icon-wrapper">
+                  <Phone size={18} />
+                </div>
+                <div className="contact-item-content">
+                  <span className="contact-label">Phone</span>
+                  <span className="contact-value">{import.meta.env.VITE_PHONE_NUMBER || '+91 9488134722'}</span>
+                </div>
+              </a>
+
+              <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer" className="contact-item">
+                <div className="contact-icon-wrapper">
+                  <Globe size={18} />
+                </div>
+                <div className="contact-item-content">
+                  <span className="contact-label">Personal Website</span>
+                  <span className="contact-value">shankar.dev</span>
+                </div>
+              </a>
+
+              <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="contact-item">
+                <div className="contact-icon-wrapper">
+                  <LinkedinIcon size={18} />
+                </div>
+                <div className="contact-item-content">
+                  <span className="contact-label">LinkedIn Profile</span>
+                  <span className="contact-value">in/shankar-kg</span>
+                </div>
+              </a>
+
+              <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="contact-item">
+                <div className="contact-icon-wrapper">
+                  <GithubIcon size={18} />
+                </div>
+                <div className="contact-item-content">
+                  <span className="contact-label">GitHub Repository</span>
+                  <span className="contact-value">github.com/shankar-kg</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Send Message Form */}
+          <div className="contact-card form-card">
+            <h3>Send a message.</h3>
+            
+            <form className="contact-form" action={`mailto:${socialLinks.email}`} method="POST" encType="text/plain">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">YOUR NAME *</label>
+                  <input type="text" id="name" name="name" placeholder="John Doe" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">EMAIL ADDRESS *</label>
+                  <input type="email" id="email" name="email" placeholder="john@techcorp.com" required />
+                </div>
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="subject">SUBJECT / TOPIC</label>
+                <input type="text" id="subject" name="subject" placeholder="Backend System Architecture Collaboration" />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="message">MESSAGE *</label>
+                <textarea id="message" name="message" rows="4" placeholder="Detail your inquiry, API requirements, or project scope..." required></textarea>
+              </div>
+              
+              <button type="submit" className="btn btn-primary submit-btn">
+                Send Message <Send size={16} />
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

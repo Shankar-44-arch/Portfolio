@@ -73,8 +73,8 @@
 }
 
 .project-card:hover {
-  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 30px -4px rgba(14, 165, 233, 0.15); /* Accent primary glow */
+  transform: translateY(-6px);
   border-color: var(--accent-primary);
 }
 
@@ -87,6 +87,19 @@
 
 .project-title {
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-arrow {
+  color: var(--text-secondary);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-card:hover .project-arrow {
+  color: var(--accent-primary);
+  transform: translate(2px, -2px);
 }
 
 .project-links {
