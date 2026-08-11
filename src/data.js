@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Shankar K G",
-  resumePath: "./resume.pdf",
-  profilePicture: "./profile.jpeg",
+  resumePath: `${import.meta.env.BASE_URL}resume.pdf`,
+  profilePicture: `${import.meta.env.BASE_URL}profile.jpeg`,
 };
 
 export const aboutData = {

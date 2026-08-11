@@ -26,12 +26,16 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
       const response = await fetch(`https://formsubmit.co/ajax/${socialLinks.email}`, {
         method: 'POST',
-        body: new FormData(form),
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify(data)
       });
       
       if (response.ok) {
