@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Globe, Send } from 'lucide-react';
 import { socialLinks, personalInfo } from '../data';
@@ -20,36 +20,6 @@ const LinkedinIcon = ({ size = 24 }) => (
 );
 
 const Contact = () => {
-  const [status, setStatus] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
-    try {
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      const response = await fetch(`https://formsubmit.co/ajax/${socialLinks.email}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      
-      if (response.ok) {
-        setStatus('success');
-        form.reset();
-        setTimeout(() => setStatus(''), 5000); // Clear success message after 5 seconds
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
-    }
-  };
-
   return (
     <section id="contact" className="contact-section section-primary">
       <motion.div 
@@ -110,7 +80,10 @@ const Contact = () => {
           <div className="contact-card form-card">
             <h3>Send a message.</h3>
             
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" action={`https://formsubmit.co/${socialLinks.email}`} method="POST">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value={window.location.href} />
+              
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">YOUR NAME *</label>
@@ -124,7 +97,7 @@ const Contact = () => {
               
               <div className="form-group">
                 <label htmlFor="subject">SUBJECT / TOPIC</label>
-                <input type="text" id="subject" name="subject" placeholder="Backend System Architecture Collaboration" />
+                <input type="text" id="subject" name="_subject" placeholder="Backend System Architecture Collaboration" />
               </div>
               
               <div className="form-group">
@@ -132,14 +105,9 @@ const Contact = () => {
                 <textarea id="message" name="message" rows="4" placeholder="Detail your inquiry, API requirements, or project scope..." required></textarea>
               </div>
               
-              <button type="submit" className="btn btn-primary submit-btn" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Sent!' : 'Send Message'} <Send size={16} />
+              <button type="submit" className="btn btn-primary submit-btn">
+                Send Message <Send size={16} />
               </button>
-              {status === 'error' && (
-                <p style={{ color: '#ff6b6b', marginTop: '1rem', fontSize: '0.9rem' }}>
-                  Oops! There was a problem submitting your form.
-                </p>
-              )}
             </form>
           </div>
         </div>
