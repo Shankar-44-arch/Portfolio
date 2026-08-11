@@ -17,7 +17,7 @@ export const aboutData = {
       description: 'Specializing in backend systems and software engineering. Consistently maintaining top academic performance while participating in various hackathons.'
     },
     {
-      degree: 'High School Diploma',
+      degree: 'High School',
       institution: 'A.V.P Trust National Matric . Hr . Sec School',
       period: 'Graduated 2024',
       description: 'Focused on mathematics and computer science fundamentals.'

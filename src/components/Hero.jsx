@@ -9,7 +9,7 @@ const Hero = ({ theme }) => {
     status: "200 OK",
     role: "Backend Engineer",
     stack: ["Python", "Java", "PostgreSQL", "Docker"],
-    open_to: "Summer Internships"
+    open_to: "Internships"
   };
 
   const [pingStatus, setPingStatus] = useState("PING API");
