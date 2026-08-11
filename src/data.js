@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Shankar K G",
-  resumePath: "/resume.pdf",
-  profilePicture: "/profile.jpeg",
+  resumePath: "./resume.pdf",
+  profilePicture: "./profile.jpeg",
 };
 
 export const aboutData = {
