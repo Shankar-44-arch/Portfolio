@@ -15,6 +15,9 @@ dist-ssr
 #files
 *.env
 *.pdf
+*.png
+*.jpg
+*.jpeg
 
 # Editor directories and files
 .vscode/*

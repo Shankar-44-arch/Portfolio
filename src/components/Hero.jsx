@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
+import { personalInfo } from '../data';
 import '../styles/Hero.css';
 
 const Hero = ({ theme }) => {
@@ -49,8 +50,8 @@ const Hero = ({ theme }) => {
             Pre-Final Year CS Student | Open to Internship Roles
           </motion.div>
           
-          <motion.h2 className="hero-greeting" variants={itemVariants}>Hi, I'm {import.meta.env.VITE_USER_NAME || "Your Name"} 👋</motion.h2>
-          <motion.h1 className="hero-headline" variants={itemVariants}>Aspiring Software Engineer</motion.h1>
+          <motion.h2 className="hero-greeting" variants={itemVariants}>Hi, I'm {personalInfo.name || "Your Name"} 👋</motion.h2>
+          <motion.h1 className="hero-headline" variants={itemVariants}>Aspiring Backend Engineer</motion.h1>
           
           <motion.p className="hero-subtext" variants={itemVariants}>
             Pre-Final Year Computer Science Student specializing in building scalable RESTful APIs, microservices, and database architecture using Python & Java.
@@ -60,7 +61,7 @@ const Hero = ({ theme }) => {
             <a href="#projects" className="btn btn-primary">
               View Projects
             </a>
-            <a href={import.meta.env.VITE_RESUME_PATH || '/resume.pdf'} className="btn btn-outline" download>
+            <a href={personalInfo.resumePath || '/resume.pdf'} className="btn btn-outline" download>
               <Download size={18} />
               Download Resume
             </a>
@@ -75,9 +76,17 @@ const Hero = ({ theme }) => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="profile-container">
-            <div className="profile-image-placeholder">
-              <span className="placeholder-text">SHANKAR.DEV</span>
-            </div>
+            {personalInfo.profilePicture ? (
+              <img 
+                src={personalInfo.profilePicture} 
+                alt={`${personalInfo.name} Profile`} 
+                className="profile-image" 
+              />
+            ) : (
+              <div className="profile-image-placeholder">
+                <span className="placeholder-text">SHANKAR.DEV</span>
+              </div>
+            )}
             
             {/* Terminal Overlay */}
             <div className="terminal-snippet">

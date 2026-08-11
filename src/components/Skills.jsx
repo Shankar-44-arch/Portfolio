@@ -32,8 +32,7 @@ const Skills = () => {
           viewport={{ once: false, margin: "-50px" }}
           variants={itemVariants}
         >
-          <span className="section-eyebrow">02. EXPERTISE</span>
-          <h2>Technical Skills.</h2>
+          <h2>Technical arsenal.</h2>
           <p>A comprehensive overview of my technical expertise and tools I use.</p>
         </motion.div>
 

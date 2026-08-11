@@ -42,20 +42,8 @@ src/
    npm install
    ```
 
-3. **Configure Environment Variables**
-   Create a `.env` file in the root directory of the project and add your personal details.
-   ```env
-   VITE_USER_NAME="Your Name"
-   VITE_USER_EMAIL="your.email@example.com"
-   VITE_PHONE_NUMBER="+1234567890"
-   VITE_GITHUB_URL="https://github.com/yourusername"
-   VITE_LINKEDIN_URL="https://linkedin.com/in/yourusername"
-   VITE_LEETCODE_URL="https://leetcode.com/yourusername"
-   VITE_SCHOOL_NAME="Your High School"
-   VITE_COLLEGE_NAME="Your University"
-   VITE_RESUME_PATH="/resume.pdf"
-   ```
-   *Note: Ensure your resume is placed in the `public/` directory as `resume.pdf`.*
+3. **Configure Portfolio Data**
+   Open `src/data.js` to update your personal details, social links, skills, projects, and achievements.
 
 4. **Run the development server**
    ```bash

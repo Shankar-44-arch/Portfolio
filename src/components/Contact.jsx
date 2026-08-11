@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Globe, Send } from 'lucide-react';
+import { socialLinks, personalInfo } from '../data';
+import '../styles/Contact.css';
 
 const GithubIcon = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -16,10 +18,34 @@ const LinkedinIcon = ({ size = 24 }) => (
     <circle cx="4" cy="4" r="2"/>
   </svg>
 );
-import { socialLinks } from '../data';
-import '../styles/Contact.css';
 
 const Contact = () => {
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${socialLinks.email}`, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+        setTimeout(() => setStatus(''), 5000); // Clear success message after 5 seconds
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
   return (
     <section id="contact" className="contact-section section-primary">
       <motion.div 
@@ -30,10 +56,9 @@ const Contact = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="section-header">
-          <span className="section-eyebrow">05. COMMUNICATION</span>
-          <h2>Direct contact.</h2>
+          <h2>Let's connect.</h2>
           <p>
-            Whether for research collaborations, medical equipment engineering, enterprise software architecture, or founder inquiries.
+            Whether for backend engineering opportunities, open-source collaborations, or just to say hi, feel free to reach out.
           </p>
         </div>
 
@@ -53,33 +78,15 @@ const Contact = () => {
                 </div>
               </a>
 
-              <a href={`tel:${import.meta.env.VITE_PHONE_NUMBER || '+911234567890'}`} className="contact-item">
-                <div className="contact-icon-wrapper">
-                  <Phone size={18} />
-                </div>
-                <div className="contact-item-content">
-                  <span className="contact-label">Phone</span>
-                  <span className="contact-value">{import.meta.env.VITE_PHONE_NUMBER || '+91 9488134722'}</span>
-                </div>
-              </a>
 
-              <a href="https://yourwebsite.com" target="_blank" rel="noopener noreferrer" className="contact-item">
-                <div className="contact-icon-wrapper">
-                  <Globe size={18} />
-                </div>
-                <div className="contact-item-content">
-                  <span className="contact-label">Personal Website</span>
-                  <span className="contact-value">shankar.dev</span>
-                </div>
-              </a>
 
               <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="contact-item">
                 <div className="contact-icon-wrapper">
                   <LinkedinIcon size={18} />
                 </div>
                 <div className="contact-item-content">
-                  <span className="contact-label">LinkedIn Profile</span>
-                  <span className="contact-value">in/shankar-kg</span>
+                  <span className="contact-label">LinkedIn</span>
+                  <span className="contact-value">in/shankar-k-g</span>
                 </div>
               </a>
 
@@ -88,8 +95,8 @@ const Contact = () => {
                   <GithubIcon size={18} />
                 </div>
                 <div className="contact-item-content">
-                  <span className="contact-label">GitHub Repository</span>
-                  <span className="contact-value">github.com/shankar-kg</span>
+                  <span className="contact-label">GitHub</span>
+                  <span className="contact-value">github.com/Shankar-44-arch</span>
                 </div>
               </a>
             </div>
@@ -99,7 +106,7 @@ const Contact = () => {
           <div className="contact-card form-card">
             <h3>Send a message.</h3>
             
-            <form className="contact-form" action={`mailto:${socialLinks.email}`} method="POST" encType="text/plain">
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="name">YOUR NAME *</label>
@@ -121,9 +128,14 @@ const Contact = () => {
                 <textarea id="message" name="message" rows="4" placeholder="Detail your inquiry, API requirements, or project scope..." required></textarea>
               </div>
               
-              <button type="submit" className="btn btn-primary submit-btn">
-                Send Message <Send size={16} />
+              <button type="submit" className="btn btn-primary submit-btn" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Sent!' : 'Send Message'} <Send size={16} />
               </button>
+              {status === 'error' && (
+                <p style={{ color: '#ff6b6b', marginTop: '1rem', fontSize: '0.9rem' }}>
+                  Oops! There was a problem submitting your form.
+                </p>
+              )}
             </form>
           </div>
         </div>

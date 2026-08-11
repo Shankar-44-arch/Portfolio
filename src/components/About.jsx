@@ -32,8 +32,7 @@ const About = () => {
           viewport={{ once: false, margin: "-50px" }}
           variants={itemVariants}
         >
-          <span className="section-eyebrow">01. INTRODUCTION</span>
-          <h2>About Me.</h2>
+          <h2>A bit about me.</h2>
           <p>My background, education, and personal philosophy.</p>
         </motion.div>
 

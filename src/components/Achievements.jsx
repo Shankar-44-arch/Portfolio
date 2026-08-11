@@ -31,7 +31,6 @@ const Achievements = () => {
           viewport={{ once: false, margin: "-50px" }}
           variants={itemVariants}
         >
-          <span className="section-eyebrow">04. RECOGNITION</span>
           <h2>Achievements & Certifications.</h2>
           <p>Milestones and professional accomplishments.</p>
         </motion.div>

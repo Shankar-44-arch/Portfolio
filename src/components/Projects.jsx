@@ -65,8 +65,7 @@ const Projects = () => {
               viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.5 }}
             >
-              <span className="section-eyebrow">03. PORTFOLIO</span>
-              <h2>Featured Projects.</h2>
+              <h2>Selected Works.</h2>
               <p>A selection of my recent backend and full-stack development work.</p>
             </motion.div>
           </div>

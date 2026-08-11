@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
-import { socialLinks } from '../data';
+import { personalInfo, socialLinks } from '../data';
 import '../styles/Navbar.css';
 
 const Navbar = ({ theme, toggleTheme }) => {
@@ -34,9 +34,9 @@ const Navbar = ({ theme, toggleTheme }) => {
   return (
     <header className="navbar">
       <div className="container navbar-container">
-        <a href="#" className="navbar-logo">
+        <a href="#hero" className="navbar-logo" onClick={() => setIsOpen(false)}>
           <span className="live-dot"></span>
-          shankar.dev()
+          shankar
         </a>
 
         {/* Desktop Nav */}

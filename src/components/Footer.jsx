@@ -1,4 +1,5 @@
 import React from 'react';
+import { socialLinks, personalInfo } from '../data';
 import '../styles/Footer.css';
 
 const Footer = () => {
@@ -13,7 +14,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-copyright">
-          &copy; {currentYear} shankar.dev(). All rights reserved.
+          &copy; {currentYear} shankar. All rights reserved.
         </div>
       </div>
     </footer>
