@@ -8,8 +8,8 @@ const Hero = ({ theme }) => {
   const statusData = {
     status: "200 OK",
     role: "Backend Engineer",
-    stack: ["Python", "Java", "PostgreSQL", "Docker"],
-    open_to: "Internships"
+    stack: ["Python", "Java", "JavaScript", "SQL"],
+    open_to: "Internships & Open Source"
   };
 
   const [pingStatus, setPingStatus] = useState("PING API");
@@ -47,7 +47,10 @@ const Hero = ({ theme }) => {
         >
           <motion.div className="status-badge" variants={itemVariants}>
             <span className="status-dot"></span>
-            Pre-Final Year CS Student | Open to Internship Roles
+            <span className="status-text">
+              Pre-Final Year CS Student <span className="status-divider">|</span> <br className="mobile-break" />
+              Open to Internship Roles
+            </span>
           </motion.div>
           
           <motion.h2 className="hero-greeting" variants={itemVariants}>Hi, I'm {personalInfo.name || "Your Name"} 👋</motion.h2>
@@ -110,10 +113,10 @@ const Hero = ({ theme }) => {
                     {'  '}<span className="json-key">"stack"</span><span className="json-colon">:</span> <span className="json-square">[</span>{'\n'}
                     {'    '}<span className="json-string">"Python"</span><span className="json-comma">,</span>{'\n'}
                     {'    '}<span className="json-string">"Java"</span><span className="json-comma">,</span>{'\n'}
-                    {'    '}<span className="json-string">"PostgreSQL"</span><span className="json-comma">,</span>{'\n'}
-                    {'    '}<span className="json-string">"Docker"</span>{'\n'}
+                    {'    '}<span className="json-string">"JavaScript"</span><span className="json-comma">,</span>{'\n'}
+                    {'    '}<span className="json-string">"SQL"</span>{'\n'}
                     {'  '}<span className="json-square">]</span><span className="json-comma">,</span>{'\n'}
-                    {'  '}<span className="json-key">"open_to"</span><span className="json-colon">:</span> <span className="json-string">"Summer Internships"</span>{'\n'}
+                    {'  '}<span className="json-key">"open_to"</span><span className="json-colon">:</span> <span className="json-string">"Internships & Open Source"</span>{'\n'}
                     <span className="json-curly">{"}"}</span>
                   </code>
                 </pre>

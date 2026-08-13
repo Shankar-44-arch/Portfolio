@@ -38,6 +38,15 @@
   height: 8px;
   border-radius: 50%;
   background-color: #22c55e; /* Green status dot */
+  flex-shrink: 0;
+}
+
+.status-text {
+  line-height: 1.4;
+}
+
+.mobile-break {
+  display: none;
 }
 
 .hero-greeting {
@@ -257,12 +266,12 @@
 
   .terminal-snippet {
     position: absolute;
-    left: -25px;
+    left: 50%;
     right: auto;
     width: 380px;
     max-width: 95vw;
     margin: 0;
-    transform: translateY(65%);
+    transform: translate(-50%, 65%);
   }
 
   .terminal-header {
@@ -302,6 +311,15 @@
   
   .status-badge {
     margin: 0 auto;
+    text-align: center;
+  }
+
+  .status-divider {
+    display: none;
+  }
+
+  .mobile-break {
+    display: block;
   }
 
   .hero-actions {

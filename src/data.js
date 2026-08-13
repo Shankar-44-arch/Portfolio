@@ -11,7 +11,7 @@ export const aboutData = {
   ],
   education: [
     {
-      degree: 'B.S. Computer Science',
+      degree: 'B.E. Computer Science and Engineering',
       institution: 'DR. N.G.P Institute of Technology',
       period: '2024 - 2028',
       description: 'Specializing in backend systems and software engineering. Consistently maintaining top academic performance while participating in various hackathons.'

@@ -13,10 +13,9 @@ import './App.css'; // Optional if any app-specific styles exist, though not str
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    // Check localStorage or system preference on initial load
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) return savedTheme;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'light';
   });
 
   useEffect(() => {

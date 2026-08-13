@@ -65,8 +65,8 @@ const Projects = () => {
               viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.5 }}
             >
-              <h2>Selected Works.</h2>
-              <p>A selection of my recent backend and full-stack development work.</p>
+              <h2>Project Works.</h2>
+              <p>A project of my recent backend and full-stack development work.</p>
             </motion.div>
           </div>
           <div className="slider-controls">
@@ -97,11 +97,12 @@ const Projects = () => {
             whileInView="visible"
             viewport={{ once: false, margin: "-50px" }}
             style={{ 
-              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` 
+              width: `${(projectsData.length / visibleCards) * 100}%`,
+              transform: `translateX(-${currentIndex * (100 / projectsData.length)}%)` 
             }}
           >
           {projectsData.map((project) => (
-            <motion.div key={project.id} className="project-card-wrapper" style={{ flex: `0 0 ${100 / visibleCards}%` }} variants={itemVariants}>
+            <motion.div key={project.id} className="project-card-wrapper" style={{ flex: `0 0 ${100 / projectsData.length}%` }} variants={itemVariants}>
               <article className="project-card">
               <div className="project-header">
                 <h3 className="project-title">
