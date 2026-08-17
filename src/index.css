@@ -46,24 +46,24 @@
 
 /* DARK THEME TOKENS */
 [data-theme="dark"] {
-  --bg-primary: #0F172A;
-  --bg-secondary: #1E293B;
-  --bg-card: #1E293B;
-  --nav-bg: rgba(15, 23, 42, 0.85);
-  --border-color: #334155;
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A0A;
+  --bg-card: #0A0A0A;
+  --nav-bg: rgba(0, 0, 0, 0.85);
+  --border-color: #222222;
 
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-primary: #F5F5F3;
+  --text-secondary: #707070;
+  --text-muted: #555555;
 
-  --accent-primary: #38BDF8;
-  --accent-hover: #0EA5E9;
-  --accent-subtle: rgba(14, 165, 233, 0.15);
+  --accent-primary: #C5A880;
+  --accent-hover: #B0926A;
+  --accent-subtle: rgba(197, 168, 128, 0.15);
 
-  --orb-color-2: #3b82f6; /* Dark mode colorful orb */
-  --orb-color-3: #8b5cf6; /* Dark mode colorful orb */
+  --orb-color-2: #D43F3F; /* Crimson Ink for nice background glow */
+  --orb-color-3: #C5A880; /* Warm Gold for background glow */
 
-  --card-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.6);
 }
 
 /* Base Resets */
